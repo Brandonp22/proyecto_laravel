@@ -13,9 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/test', function(){
-    return view('test');
-});
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
+
+Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index']);
+
+use App\Http\Controllers\ClientController;
+Route::resource('/clients', ClientController::class);
+Route::get('/clients/{id}/confirmDelete',  [\App\Http\Controllers\ClientController::class, 'confirmDelete']);
+
+/* use App\Http\Controllers\ClientController;
+Route::get('/expense_reports/{expense_report}/expenses/create', 'ExpenseController@create'); */
