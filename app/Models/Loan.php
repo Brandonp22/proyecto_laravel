@@ -11,7 +11,7 @@ class Loan extends Model
         return $this->belongsTo(Client::class);
     } 
 
-    protected $fillable = ['borrowedCapital'];
+    /* protected $fillable = ['borrowedCapital']; */
 
 /*     public function loanInstallments(){
         return $this->hasMany(LoanInstallment::class);

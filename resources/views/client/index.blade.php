@@ -16,6 +16,12 @@
     <div class="row">
         <div class="col">
             <table class="table">
+                <tr>
+                    <td><strong>DPI</strong></td>
+                    <td><strong>Nombre</strong></td>
+                    <td><strong>Apellido</strong></td>
+                    <td><strong>Direccion</strong></td>
+                </tr>
                 @foreach($clients as $client)
                     <tr>
                         <td><a href="/clients/{{$client->id}}">{{$client->dpi}}</a></td>

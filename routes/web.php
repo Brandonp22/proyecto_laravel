@@ -21,5 +21,6 @@ use App\Http\Controllers\ClientController;
 Route::resource('/clients', ClientController::class);
 Route::get('/clients/{id}/confirmDelete',  [\App\Http\Controllers\ClientController::class, 'confirmDelete']);
 
-/* use App\Http\Controllers\ClientController;
-Route::get('/expense_reports/{expense_report}/expenses/create', 'ExpenseController@create'); */
+Route::get('/clients/{client}/loans/create',  [\App\Http\Controllers\LoanController::class, 'create']);
+Route::post('/clients/{client}/loans',  [\App\Http\Controllers\LoanController::class, 'store']);
+

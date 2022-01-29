@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Loan;
-use App\Models\Client;
 use Illuminate\Http\Request;
 
-class LoanController extends Controller
+class LoanInstallmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,11 +21,9 @@ class LoanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Client $client)
-    {   
-        return view('loan.create', [
-            'clientLoan' => $client
-        ]);
+    public function create()
+    {
+        //
     }
 
     /**
@@ -36,18 +32,9 @@ class LoanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Client $client)
+    public function store(Request $request)
     {
-        $clientLoan = new Loan();
-        $clientLoan->loanBalance = 1;
-        $clientLoan->borrowedCapital = $request->get('borrowedCapital');
-        $clientLoan->appliedInterest = $request->get('appliedInterest');
-        $clientLoan->amountInstallments = $request->get('amountInstallments');
-        $clientLoan->statusLoan = 1;
-        $clientLoan->client_id = $client->id;
-        $clientLoan->save();
-
-        return redirect('/clients/' . $client->id);
+        //
     }
 
     /**
