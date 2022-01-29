@@ -16,10 +16,11 @@ class CreateLoanInstallmentsTable extends Migration
         Schema::create('loan_installments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('loan_id');
-            $table->date('payDate');
-            $table->date('paidDate');
-            $table->decimal('initialInstallmentValue');
+/*             $table->date('payDate');
+            $table->date('paidDate'); */
+            $table->decimal('InterestInstallment');
             $table->decimal('installmentBalance');
+            $table->decimal('capital');
             $table->integer('statusLoanInstallment');
             $table->timestamps();
         });

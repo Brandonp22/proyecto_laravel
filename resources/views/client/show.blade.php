@@ -24,6 +24,7 @@
                     <td><strong>Capital</strong></td>
                     <td><strong>Intereses</strong></td>
                     <td><strong>Cuotas</strong></td>
+                    <td><strong>Tipo</strong></td>
                     <td><strong>Estatus</strong></td>
                 </tr>
                 <tr>
@@ -32,6 +33,14 @@
                     <td>{{$clientLoan->loans->borrowedCapital}}</td>
                     <td>{{$clientLoan->loans->appliedInterest}}</td>
                     <td>{{$clientLoan->loans->amountInstallments}}</td>
+
+                    @if ($clientLoan->loans->period === 36000)
+                        <td>Diario</td>
+                    @elseif($clientLoan->loans->period === 4800)
+                        <td>Semanal</td>
+                    @elseif($clientLoan->loans->period === 1200)
+                        <td>Mensual</td>
+                    @endif
 
                     @if ($clientLoan->loans->statusLoan === 1)
                     <td>Activo</td>
@@ -52,7 +61,49 @@
                     </div>
                 @endif
             </table>
-            
+        </div>
+    </div>
+
+    <td><a class="link-danger" href="/clients/{{$clientLoan->id}}/loans/{{$clientLoan->id}}/loanInstallments/generateInstallments">generar</a></td>
+
+    {{--  --}}
+    <div class="row">
+        <div class="col">
+            @if(isset($clientLoan->loans->loanInstallments))
+                <h3>Cuotas del Prestamo</h3>
+                <table class="table">
+                <tr>
+                    <td><strong>Cuota</strong></td>
+                    <td><strong>Fecha de Pago</strong></td>
+                    <td><strong>Fecha Pagada</strong></td>
+                    <td><strong>Intereses</strong></td>
+                    <td><strong>Saldo a pagar</strong></td>
+                    <td><strong>Capital Pendinte</strong></td>
+                    <td><strong>Estado</strong></td>
+                </tr>
+                @php
+                $num = 0;
+                @endphp
+                @foreach($clientLoan->loans->loanInstallments as $installment)
+                <tr>
+                    <td>{{$num = $num+1}}</td>
+                    <td>{{$installment->payDate}}</td>
+                    <td>{{$installment->paidDate}}</td>
+                    <td>{{$installment->InterestInstallment}}</td>
+                    <td>{{$installment->installmentBalance}}</td>
+                    <td>{{$installment->capital}}</td>
+
+                    @if ($installment->statusLoanInstallment === 1)
+                    <td>Pendiente pago</td>
+                    @else
+                    <td>Pagado</td>
+                    @endif
+                </tr>
+                @endforeach  
+                @else
+
+                @endif
+            </table>
         </div>
     </div>
 

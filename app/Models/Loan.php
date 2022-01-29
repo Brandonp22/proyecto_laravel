@@ -11,11 +11,10 @@ class Loan extends Model
         return $this->belongsTo(Client::class);
     } 
 
-    /* protected $fillable = ['borrowedCapital']; */
 
-/*     public function loanInstallments(){
+    public function loanInstallments(){
         return $this->hasMany(LoanInstallment::class);
-    }  */
+    } 
 
     use HasFactory;
 }

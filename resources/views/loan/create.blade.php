@@ -28,7 +28,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="borrowedCapital">Capital a prestar</label>
-                    <input type="text" class="form-control" id="borrowedCapital" name="borrowedCapital" placeholder="Capital" value ="{{old('name')}}">
+                    <input type="text" class="form-control" id="borrowedCapital" name="borrowedCapital" placeholder="Capital" value ="{{old('borrowedCapital')}}">
                     <label for="type">Tipo:</label>
                     <select class="form-select" name="type">
                         <option selected>Seleccionar</option>
@@ -37,9 +37,9 @@
                         <option value="1200">Mes</option>
                     </select>
                     <label for="amountInstallments">Cuotas:</label>
-                    <input type="text" class="form-control" id="amountInstallments" name="amountInstallments" placeholder="Intereses" value ="{{old('lastname')}}">
+                    <input type="text" class="form-control" id="amountInstallments" name="amountInstallments" placeholder="Intereses" value ="{{old('amountInstallments')}}">
                     <label for="appliedInterest">Tasa de intereses</label>
-                    <input type="text" class="form-control" id="appliedInterest" name="appliedInterest" placeholder="Cuotas" value ="{{old('direction')}}">
+                    <input type="text" class="form-control" id="appliedInterest" name="appliedInterest" placeholder="Cuotas" value ="{{old('appliedInterest')}}">
                 </div>
                 <button class="btn btn-primary" type="submit">Crear</button>
             </form>

@@ -41,6 +41,7 @@ class LoanController extends Controller
         $clientLoan = new Loan();
         $clientLoan->loanBalance = 1;
         $clientLoan->borrowedCapital = $request->get('borrowedCapital');
+        $clientLoan->period = $request->get('type');
         $clientLoan->appliedInterest = $request->get('appliedInterest');
         $clientLoan->amountInstallments = $request->get('amountInstallments');
         $clientLoan->statusLoan = 1;

@@ -20,8 +20,7 @@ class CreateLoansTable extends Migration
             $table->decimal('borrowedCapital');
             $table->decimal('appliedInterest');
             $table->integer('amountInstallments');
-/*             $table->unsignedBigInteger('id_paymentPeriod'); */
-/*             $table->unsignedBigInteger('id_user'); */
+            $table->integer('period');
             $table->integer('statusLoan');
             $table->timestamps();
         });

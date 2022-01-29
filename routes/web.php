@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
 
-Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class, 'index']);
 
 use App\Http\Controllers\ClientController;
 Route::resource('/clients', ClientController::class);
@@ -24,3 +23,9 @@ Route::get('/clients/{id}/confirmDelete',  [\App\Http\Controllers\ClientControll
 Route::get('/clients/{client}/loans/create',  [\App\Http\Controllers\LoanController::class, 'create']);
 Route::post('/clients/{client}/loans',  [\App\Http\Controllers\LoanController::class, 'store']);
 
+Route::get('/clients/{client}/loans/{loan}/loanInstallments/create',  [\App\Http\Controllers\LoanInstallmentController::class, 'create']);
+Route::get('/clients/{client}/loans/{loan}/loanInstallments/generateInstallments',  [\App\Http\Controllers\LoanInstallmentController::class, 'generateInstallments']);
+
+
+Route::get('/clients/calculator',  [\App\Http\Controllers\CalculatorController::class, 'index']);
+Route::post('/clients/calculator',  [\App\Http\Controllers\CalculatorController::class, 'calculate']);
