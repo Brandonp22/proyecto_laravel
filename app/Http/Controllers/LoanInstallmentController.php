@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Loan;
 use App\Models\LoanInstallment;
 
+use function PHPSTORM_META\type;
+
 class LoanInstallmentController extends Controller
 {
     /**
@@ -38,20 +40,6 @@ class LoanInstallmentController extends Controller
      */
     public function store(Loan $loan)
     {
-
-
-
-
-        /* $loanInstallment = new LoanInstallment(); */
-        /* $loanInstallment->payDate = $payDay; */
-        /* $loanInstallment->paidDate = null; */
-        /* $loanInstallment->InterestInstallment = $interest; */
-        /* $loanInstallment->installmentBalance = $totalint; */
-        /* $loanInstallment->capital = $debt; */
-        /* $loanInstallment->statusLoanInstallment = 1;
-        $loanInstallment->loan_id = $loan->id; */
-
-        return redirect('/clients/' . $loan->id);
     }
 
     /**
@@ -121,11 +109,11 @@ class LoanInstallmentController extends Controller
            if($date == 'sunday'){
                $datestart= strtotime($dateSend);
                $total = ((1) * 86400)+$datestart; 
-               $day = date("l", $total);
-               return date('Y-m-d', $total). " " . $day;
+               /* $day = date("l", $total); */
+               return date('Y-m-d', $total);
            }else{
-               $day = date("l", $total);
-               return date('Y-m-d', $total). " " . $day;
+               /* $day = date("l", $total); */
+               return date('Y-m-d', $total);
            }
        }
 
@@ -135,22 +123,21 @@ class LoanInstallmentController extends Controller
            
        //Set typo
        $period = 0;
-       if($type === "36000"){
+       if($type === 36000){
            $period = 1;
-       }else if ($type === "4800"){
+       }else if ($type === 4800){
            $period = 7;
-       }else if ($type === "1200"){
+       }else if ($type === 1200){
            $period = 30;
        }
        $payDay = date("Y-m-d");        
-
        //send db
        for ($i=1;$i<=$installment*1;$i++) {
            $loanInstallment = new LoanInstallment();
            /* echo "<tr>";
                echo "<td align=right>".$i."</td>"; */
                $payDay = powDays($payDay,$period);
-               /* $loanInstallment->payDate = $payDay;----- */
+               $loanInstallment->payDate = $payDay;
 /*                $loanInstallment->payDate = null;
                $loanInstallment->paidDate = null; */
 
@@ -174,5 +161,7 @@ class LoanInstallmentController extends Controller
                $loanInstallment->loan_id = $loan->id;
                $loanInstallment->save();
        }
+
+       return redirect('/clients/' . $loan->id);
     }
 }

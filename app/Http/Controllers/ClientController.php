@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\loanSummary;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use Illuminate\Support\Facades\Mail;
 
 class ClientController extends Controller
 {
@@ -127,6 +129,19 @@ class ClientController extends Controller
         return view('client.confirmDelete', [
             'client' => $client
         ]);
+    }
+
+    public function confirmSendEmail($id){
+        $client = Client::findOrFail($id);
+        return view('client.confirmSendEmail', [
+            'client' => $client
+        ]);
+    }
+
+    public function sendEmail(Request $request, $id){
+        $client = Client::findOrFail($id);
+        Mail::to($request->get('email'))->send(new loanSummary($client));
+        return redirect('/clients/'. $id);
     }
 
 }

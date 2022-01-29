@@ -39,7 +39,7 @@ class LoanController extends Controller
     public function store(Request $request, Client $client)
     {
         $clientLoan = new Loan();
-        $clientLoan->loanBalance = 1;
+        $clientLoan->loanBalance = $request->get('borrowedCapital');
         $clientLoan->borrowedCapital = $request->get('borrowedCapital');
         $clientLoan->period = $request->get('type');
         $clientLoan->appliedInterest = $request->get('appliedInterest');

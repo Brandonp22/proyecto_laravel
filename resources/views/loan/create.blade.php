@@ -42,6 +42,7 @@
                     <input type="text" class="form-control" id="appliedInterest" name="appliedInterest" placeholder="Cuotas" value ="{{old('appliedInterest')}}">
                 </div>
                 <button class="btn btn-primary" type="submit">Crear</button>
+                
             </form>
         </div>
     </div>
