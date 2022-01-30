@@ -17,7 +17,7 @@ class CreateLoanInstallmentsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('loan_id');
             $table->date('payDate');
-            /* $table->date('paidDate'); */
+            $table->date('paidDate')->nullable();
             $table->decimal('InterestInstallment');
             $table->decimal('installmentBalance');
             $table->decimal('capital');

@@ -1,6 +1,8 @@
 @extends('layouts.base')
 
 @section('content')
+<div class="container">
+
     <div class="row">
         <div class="col">
             <h1>Clientes</h1>
@@ -77,5 +79,8 @@
         </div>
       </div>
     </div>
+
+</div>
+
 
 @endsection

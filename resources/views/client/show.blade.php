@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
+   <div class="container">
     <div class="row">
         <div class="col">
             <h1>Datos cliente {{$clientLoan->name}} {{$clientLoan->lastname}}</h1>
@@ -10,15 +11,10 @@
     <div class="row">
         <div class="col">
             <a class="btn btn-secondary" href="/clients">Regresar</a>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
             <a class="btn btn-primary" href="/clients/{{$clientLoan->id}}/confirmSendEmail">Enviar Correo</a>
         </div>
     </div>
-
+    <br>
     <div class="row">
         <div class="col">
             <h3>Prestamos</h3>
@@ -74,8 +70,9 @@
     <div class="row">
         <div class="col">
             @if(isset($clientLoan->loans->loanInstallments))
-            <td><a class="link-danger" href="/clients/{{$clientLoan->id}}/loans/{{$clientLoan->id}}/loanInstallments/generateInstallments">generar</a></td>
-
+            <a class="link-danger" href="/clients/{{$clientLoan->id}}/loans/{{$clientLoan->id}}/loanInstallments/generateInstallments">generar</a>
+            <br>
+            <br>
                 <h3>Cuotas del Prestamo</h3>
                 <table class="table">
                 <tr>
@@ -101,9 +98,11 @@
 
                     @if ($installment->statusLoanInstallment === 1)
                     <td>Pendiente pago</td>
+                    <td><a href="/clients/{{$clientLoan->id}}/loans/{{$clientLoan->id}}/loanInstallments/update" class="link-success">PAGAR</a></td>
                     @else
                     <td>Pagado</td>
                     @endif
+                    
                 </tr>
                 @endforeach  
                 @else
@@ -112,7 +111,7 @@
             </table>
         </div>
     </div>
-
+   </div>
 @endsection
 
 

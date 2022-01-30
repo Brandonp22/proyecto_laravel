@@ -71,9 +71,16 @@ class LoanInstallmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        //
+        $paid = '1';
+        $column = 'statusLoanInstallment';
+        $loanInstallment = LoanInstallment::where($column, '=', $paid)->first();
+
+        $loanInstallment->paidDate = date("Y-m-d"); 
+        $loanInstallment->statusLoanInstallment = 0;
+        $loanInstallment->save();
+        return redirect('/clients/' .$id);
     }
 
     /**
@@ -138,7 +145,7 @@ class LoanInstallmentController extends Controller
                echo "<td align=right>".$i."</td>"; */
                $payDay = powDays($payDay,$period);
                $loanInstallment->payDate = $payDay;
-/*                $loanInstallment->payDate = null;
+/*             $loanInstallment->payDate = null;
                $loanInstallment->paidDate = null; */
 
                /* $totalint=$totalint+($debt*$interest); */

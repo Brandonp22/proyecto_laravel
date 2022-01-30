@@ -1,6 +1,8 @@
 @extends('layouts.base')
 
+
 @section('content')
+<div class="container">
     <div class="row">
         <div class="col">
             <h1>Borrar cliente {{$client->name}} {{$client->lastname}}</h1>
@@ -12,7 +14,7 @@
             <a class="btn btn-secondary" href="/clients">Regresar</a>
         </div>
     </div>
-
+    <br>
     <div class="row">
         <div class="col">
             <form action="/clients/ {{ $client->id }}" method="post">
@@ -22,5 +24,5 @@
             </form>
         </div>
     </div>
-
+</div>
 @endsection

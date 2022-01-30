@@ -1,6 +1,8 @@
 @extends('layouts.base')
 
+
 @section('content')
+<div class="container">
     <div class="row">
         <div class="col">
             <h1>Nuevo cliente</h1>
@@ -35,10 +37,12 @@
                     <input type="text" class="form-control" id="direction" name="direction" placeholder="Direccion" value ="{{old('direction')}}">
                     <label for="dpi">DPI:</label>
                     <input type="text" class="form-control" id="dpi" name="dpi" placeholder="DPI" value ="{{old('dpi')}}">
+                    <label for="email">Correo:</label>
+                    <input type="text" class="form-control" id="email" name="email" placeholder="email" value ="{{old('email')}}">
                 </div>
                 <button class="btn btn-primary" type="submit">Crear</button>
             </form>
         </div>
     </div>
-
+</div>
 @endsection

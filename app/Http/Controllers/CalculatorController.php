@@ -170,6 +170,6 @@ class CalculatorController extends Controller
     echo number_format($totalint,2,".",",");
         
     echo "<br><br> <a href='/clients'>Regresar</a>";
-    echo "<br><br> <a href='#'>Imprimir</a>";
+    echo '<br><br> <input type="button" value="Print this page" onClick="window.print()">';
     }
 }

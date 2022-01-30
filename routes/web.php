@@ -28,6 +28,20 @@ Route::post('/clients/{client}/loans',  [\App\Http\Controllers\LoanController::c
 
 Route::get('/clients/{client}/loans/{loan}/loanInstallments/create',  [\App\Http\Controllers\LoanInstallmentController::class, 'create']);
 Route::get('/clients/{client}/loans/{loan}/loanInstallments/generateInstallments',  [\App\Http\Controllers\LoanInstallmentController::class, 'generateInstallments']);
+Route::get('/clients/{client}/loans/{loan}/loanInstallments/update',  [\App\Http\Controllers\LoanInstallmentController::class, 'update']);
 
 Route::get('/clients/calculator',  [\App\Http\Controllers\CalculatorController::class, 'index']);
 Route::post('/clients/calculator',  [\App\Http\Controllers\CalculatorController::class, 'calculate']);
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+use App\Http\Controllers\UserClientcontroller;
+Route::resource('/myLoan', UserClientcontroller::class);
+
+Route::get('/myLoan/{id}/show', [\App\Http\Controllers\UserClientcontroller::class, 'show']);
+
+Route::get('/print', [\App\Http\Controllers\PrintController::class, 'print']);

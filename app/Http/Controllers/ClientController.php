@@ -5,17 +5,25 @@ namespace App\Http\Controllers;
 use App\Mail\loanSummary;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
 class ClientController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    } 
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $request->user()->authorizeRoles(['admin']);
         return view('client.index', [
             'clients' => Client::all()
         ]);
@@ -51,11 +59,19 @@ class ClientController extends Controller
         $newClient->lastname = $request->get('lastname');
         $newClient->direction = $request->get('direction');
         $newClient->dpi = $request->get('dpi');
+        $newClient->dpi = $request->get('dpi');
         $newClient->status = 1;
+
+        $email = $request->get('email');
+
+        $column = 'email';
+        $userid = User::where($column, '=', $email)->first();
+        $newClient->user_id = $userid->id;
         $newClient->save();
 
         return redirect('/clients');
     }
+
 
     /**
      * Display the specified resource.
